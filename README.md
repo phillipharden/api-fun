@@ -67,7 +67,8 @@ http://localhost:3000
 
 ## 🌐 Live Demo
 
-(Add deployment link here when available)
+👉 [View the Live Site](https://freshfindsatl.com/)
+
 
 ---
 
