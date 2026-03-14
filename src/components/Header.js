@@ -1,6 +1,5 @@
 import React from "react";
 import { Container } from "react-bootstrap";
-import "../css/Header.css";
 
 const Header = (props) => {
   return (

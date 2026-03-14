@@ -1,82 +1,129 @@
-/*^ Typography ****************************************************/
+
+  /*^ PlayFit Color Palette */
+:root {
+  --pf-black: #191919;
+  --pf-gray: #808080;
+  --pf-light-gray: #b2b2b2;
+  --pf-white: #ffffff;
+  --pf-accent: #1ceff4;
+}
+
+/*^ =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
+/*^ Typography -=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
+/*^ =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
 @import url("https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500&display=swap");
 
+/*^ =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
+/*^ Global Reset -=-=-=-=-=-=-=-=-=-=-=-=-=-*/
+/*^ =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
 * {
-  font-family: "Montserrat", sans-serif;
   margin: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
 }
 
+html,
+body,
+#root {
+  min-height: 100%;
+  background-color: var(--pf-black);
+  color: var(--pf-white);
+}
+
+/*^ =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
+/*^ Brand Font -=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
+/*^ =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
 .brand-font {
   font-family: "Architects Daughter", cursive;
 }
 
-.app {  
-  color: #9FFFCB;
-  background: linear-gradient(transparent, rgba(0, 0, 0, 1));
-  background-color: rgb(91, 87, 115);
+/*^ =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
+/*^ App Layout -=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
+/*^ =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
+.app {
+  min-height: 100vh;
+  color: var(--pf-white);
+  background: linear-gradient(
+    180deg,
+    var(--pf-black) 0%,
+    rgba(25, 25, 25, 0.96) 100%
+  );
 }
+
 .app-header {
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 1;
+  z-index: 1000;
 }
 
 .main-section {
   display: flex;
   flex-grow: 1;
+  min-height: 100vh;
 }
 
 .app-sidebar {
   flex: 0.1;
   min-width: 200px;
   height: 100vh;
-  background-color: #BEDCFE;
+  background-color: var(--pf-black);
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .app-body {
   display: flex;
   flex-direction: column;
-  /* padding: 30px; */
-  width: 100vw;
-  height: 100vh;
-  overflow-y: overlay;
-  flex: 0.9;  
+  flex: 0.9;
+  width: 100%;
+  min-height: 100vh;
+  overflow-y: auto;
 }
 
 .app-footer-nav {
   position: fixed;
   bottom: 0;
   width: 100%;
-  z-index: 1;
+  z-index: 1000;
 }
 
-/* Hide the sidebar when the screen is 540px or smaller */
+/*^ =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
+/*^ Utility Classes -=-=-=-=-=-=-=-=-=-=-=-=*/
+/*^ =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
+.margin-bottom-custom {
+  margin-bottom: 80px;
+}
+
+/*^ =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
+/*^ Mobile Layout -=-=-=-=-=-=-=-=-=-=-=-=-=*/
+/*^ =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
 @media only screen and (max-width: 540px) {
   .app-sidebar {
     display: none;
   }
+
   .app-body {
-    flex: 10;
+    flex: 1;
     margin-top: 60px;
-    height: 100vh;
-  }  
+    min-height: 100vh;
+    padding-bottom: 80px;
+  }
 }
 
-/* Hide the header and footer when the screen is 540px or larger */
+/*^ =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
+/*^ Desktop Layout -=-=-=-=-=-=-=-=-=-=-=-=-*/
+/*^ =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
 @media only screen and (min-width: 540px) {
   .app-header {
     display: none;
   }
+
   .app-footer-nav {
     display: none;
-  }  
+  }
+
   .app-body {
     padding-top: 30px;
-  }  
-}
-
-.margin-bottom-custom {
-  margin-bottom: 80px;
+  }
 }

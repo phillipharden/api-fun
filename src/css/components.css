@@ -1,0 +1,566 @@
+/*^ =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
+/*^ Header -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
+/*^ =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
+
+header {
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-container {
+  background-color: var(--pf-black);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.header-logo {
+  width: 48px;
+  height: 48px;
+}
+
+.header-title {
+  font-size: 30px;
+  color: var(--pf-white);
+}
+
+/*^ =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
+/*^ Sidebar -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
+/*^ =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
+
+.sidebar {
+  color: var(--pf-white);
+}
+
+.sidebar-body {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  margin: 0 auto;
+  padding-left: 10px;
+}
+
+.sidebar-logo {
+  width: 200px;
+}
+
+.sidebar-icon {
+  font-size: 24px;
+  text-align: center;
+}
+
+.sidebar-link {
+  text-decoration: none;
+  color: var(--pf-light-gray);
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 50px;
+  margin: 2px 0;
+  width: 175px;
+  transition: 0.25s ease;
+}
+
+/*^ Mouse Over Link */
+
+.sidebar-link:hover {
+  color: var(--pf-black);
+  background-color: var(--pf-accent);
+}
+
+/*^ Selected Link */
+
+.sidebar-link:active {
+  color: var(--pf-accent);
+}
+
+/*^ =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
+/*^ Footer Nav -=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
+/*^ =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
+
+.footer-nav {
+  height: 75px;
+  background-color: var(--pf-black);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer-nav-body {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.footer-nav-link {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  width: 60px;
+  height: 60px;
+  font-size: 12px;
+  margin: auto;
+}
+
+.footer-nav-icon {
+  width: 60px;
+  height: 60px;
+  color: var(--pf-accent);
+  margin: 0 auto;
+}
+
+.footer-nav-text {
+  color: var(--pf-light-gray);
+  text-align: center;
+}
+
+/*^ =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
+/*^ Movie Search -=-=-=-=-=-=-=-=-=-=-=-=-=-*/
+/*^ =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
+
+.movie-results-list {
+  border: none;
+  background: transparent;
+}
+
+.movie-result-item {
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--pf-white);
+  margin-bottom: 10px;
+  transition: 0.25s ease;
+  cursor: pointer;
+}
+
+.movie-result-item:hover {
+  background-color: rgba(28, 239, 244, 0.08);
+  border-color: var(--pf-accent);
+  color: var(--pf-white);
+}
+
+.movie-result-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.movie-result-title {
+  font-weight: 600;
+  color: var(--pf-white);
+}
+
+.movie-result-year {
+  color: var(--pf-light-gray);
+  white-space: nowrap;
+}
+
+/*^ =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
+/*^ Movie Details -=-=-=-=-=-=-=-=-=-=-=-=-=*/
+/*^ =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
+
+.movie-details-page {
+  color: var(--pf-white);
+}
+
+.movie-poster-wrap {
+  width: 100%;
+}
+
+.movie-details-poster {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+}
+
+.movie-details-content {
+  height: 100%;
+}
+
+.movie-details-title {
+  margin-bottom: 20px;
+  color: var(--pf-white);
+}
+
+.movie-details-meta {
+  margin-bottom: 10px;
+  color: var(--pf-light-gray);
+}
+
+.movie-details-overview {
+  margin-top: 24px;
+}
+
+.movie-details-overview h2 {
+  color: var(--pf-accent);
+  margin-bottom: 12px;
+}
+
+.movie-details-overview p {
+  color: var(--pf-white);
+  line-height: 1.6;
+}
+
+
+/*^ =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
+/*^ Spotify Search -=-=-=-=-=-=-=-=-=-=-=-=-*/
+/*^ =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
+
+.spotify-results-list {
+  background-color: transparent;
+  border: none;
+}
+
+.spotify-result-item {
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--pf-white);
+  margin-bottom: 10px;
+}
+
+.spotify-result-item:hover {
+  background-color: rgba(28, 239, 244, 0.08);
+  color: var(--pf-white);
+}
+
+.spotify-result-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.spotify-result-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  min-width: 0;
+}
+
+.spotify-result-image {
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.spotify-result-text {
+  min-width: 0;
+}
+
+.spotify-result-name {
+  color: var(--pf-white);
+  font-weight: 600;
+}
+
+.spotify-result-subtitle {
+  color: var(--pf-light-gray);
+  font-size: 14px;
+}
+
+.spotify-result-badge {
+  color: var(--pf-accent);
+  border: 1px solid var(--pf-accent);
+}
+
+/*^ =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
+/*^ Spotify Details -=-=-=-=-=-=-=-=-=-=-=-=*/
+/*^ =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
+
+.spotify-detail-layout {
+  align-items: flex-start;
+}
+
+.spotify-detail-sidebar {
+  position: sticky;
+  top: 30px;
+}
+
+.spotify-detail-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 16px;
+  margin-bottom: 20px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+}
+
+.artist-detail-image {
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+.album-detail-image {
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+.spotify-detail-info {
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 20px;
+}
+
+.spotify-detail-title {
+  color: var(--pf-white);
+  margin-bottom: 16px;
+}
+
+.spotify-detail-meta {
+  color: var(--pf-light-gray);
+  margin-bottom: 10px;
+}
+
+.spotify-detail-main {
+  width: 100%;
+}
+
+.spotify-click-card {
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.spotify-click-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
+}
+
+.spotify-track-list {
+  background-color: transparent;
+  border: none;
+}
+
+.spotify-track-item {
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--pf-white);
+  margin-bottom: 10px;
+  transition: 0.25s ease;
+}
+
+.spotify-track-item:hover {
+  background-color: rgba(28, 239, 244, 0.08);
+  border-color: var(--pf-accent);
+  color: var(--pf-white);
+}
+
+.spotify-track-row {
+  display: grid;
+  grid-template-columns: 40px 1fr auto;
+  gap: 12px;
+  align-items: center;
+}
+
+.spotify-track-number {
+  color: var(--pf-light-gray);
+}
+
+.spotify-track-name {
+  color: var(--pf-white);
+  font-weight: 500;
+}
+
+.spotify-track-duration {
+  color: var(--pf-light-gray);
+  white-space: nowrap;
+}
+
+/*^ =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
+/*^ Spotify Details Responsive -=-=-=-=-=-=-*/
+/*^ =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
+
+@media only screen and (max-width: 991px) {
+  .spotify-detail-sidebar {
+    position: static;
+  }
+
+  .spotify-track-row {
+    grid-template-columns: 30px 1fr;
+  }
+
+  .spotify-track-duration {
+    grid-column: 2 / 3;
+  }
+}
+
+/*^ =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
+/*^ Spotify Album Cards -=-=-=-=-=-=-=-=-=-=*/
+/*^ =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
+
+.album-card {
+  background-color: var(--pf-black);
+  border: 1px solid #2a2a2a;
+  color: var(--pf-white);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.album-card .card-title {
+  color: var(--pf-white);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.album-card .card-text {
+  color: var(--pf-light-gray);
+}
+
+.album-card img {
+  border-bottom: 1px solid #2a2a2a;
+}
+
+.album-card:hover {
+  border-color: var(--pf-accent);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.6);
+}
+
+
+
+/* ------------------------------------------------ */
+/* HERO SECTION */
+/* ------------------------------------------------ */
+
+.home-hero {
+  padding-top: 30px;
+  padding-bottom: 40px;
+}
+
+/* text container */
+.home-hero__content {
+  max-width: 550px;
+}
+
+/* small top label */
+.home-hero__eyebrow {
+  color: var(--pf-accent);
+  font-size: 14px;
+  letter-spacing: 2px;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+/* main headline */
+.home-hero__title {
+  color: var(--pf-white);
+  font-size: clamp(2.4rem, 4vw, 3.5rem);
+  line-height: 1.1;
+  margin-bottom: 18px;
+}
+
+/* description */
+.home-hero__text {
+  color: var(--pf-light-gray);
+  font-size: 18px;
+  line-height: 1.7;
+  margin-bottom: 26px;
+}
+
+/* button container */
+.home-hero__actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+/* ------------------------------------------------ */
+/* HERO BUTTONS */
+/* ------------------------------------------------ */
+
+.home-btn {
+  padding: 12px 22px;
+  border-radius: 10px;
+  font-weight: 600;
+  border: none;
+  transition: 0.25s;
+}
+
+.home-btn--primary {
+  background: var(--pf-accent);
+  color: var(--pf-black);
+}
+
+.home-btn--primary:hover {
+  background: var(--pf-white);
+  color: var(--pf-black);
+}
+
+.home-btn--secondary {
+  background: transparent;
+  color: var(--pf-white);
+  border: 1px solid rgba(255,255,255,.2);
+}
+
+.home-btn--secondary:hover {
+  border-color: var(--pf-accent);
+  background: rgba(255,255,255,.05);
+}
+
+/* ------------------------------------------------ */
+/* HERO IMAGE */
+/* ------------------------------------------------ */
+
+.home-hero__image-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-hero__image {
+  max-width: 520px;
+  width: 100%;
+  height: auto;
+}
+
+/* ------------------------------------------------ */
+/* FEATURE CARDS */
+/* ------------------------------------------------ */
+
+.home-features {
+  margin-top: 40px;
+}
+
+.home-feature-card {
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 16px;
+  padding: 20px;
+  transition: 0.25s;
+}
+
+.home-feature-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--pf-accent);
+}
+
+.home-feature-card__title {
+  color: var(--pf-white);
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.home-feature-card__text {
+  color: var(--pf-light-gray);
+  line-height: 1.6;
+}
+
+
+/*^ optional =-=-=-=-=-=-=-=-=-=-=*/
+@media (max-width: 992px) {
+
+  .home-hero__content {
+    text-align: center;
+    margin: auto;
+  }
+
+  .home-hero__actions {
+    justify-content: center;
+  }
+
+  .home-hero__image {
+    max-width: 400px;
+    margin-top: 20px;
+  }
+
+}

@@ -1,47 +1,52 @@
 import React from "react";
-import { useState, useEffect } from "react";
 //? -----REACT-ROUTER----------------------------------------------------------------
-import { HashRouter as Router, Routes, Route } from "react-router-dom";
-//? -----CSS-------------------------------------------------------------------------
-import "./css/App.css";
+import { Routes, Route } from "react-router-dom";
 //? -----PAGES-----------------------------------------------------------------------
 import Home from "./pages/Home";
 import ArtistSearch from "./pages/ArtistSearch";
 import SongSearch from "./pages/SongSearch";
 import AlbumSearch from "./pages/AlbumSearch";
-import Exercises from "./pages/Exercises";
-import Search from "./pages/Search";
+import MovieSearch from "./pages/MovieSearch";
 //? -----COMPONENTS-------------------------------------------------------------------
 import Sidebar from "./components/Sidebar";
 import FooterNav from "./components/FooterNav";
 import Header from "./components/Header";
-//? -----REACT-BOOTSTRAP--------------------------------------------------------------
-import { Container, ToggleButton } from "react-bootstrap";
-import Logo from "./images/workout-playlist-logo.png";
+import Logo from "./images/api-fun-logo.png";
+import MovieDetails from "./components/MovieDetails";
+
+import SpotifySearch from "./pages/SpotifySearch";
+import SpotifyArtistDetails from "./components/SpotifyArtistDetails";
+import SpotifyAlbumDetails from "./components/SpotifyAlbumDetails";
+
+
 
 function App() {
   return (
-
-    
     <div className="app">
       <div className="app-header">
-        <Header ImgUrl={Logo} ImgAlt="PlayFit's Logo" Title="PlayFit" />
+        <Header ImgUrl={Logo} ImgAlt="API Fun's Logo" Title="API Fun" />
       </div>
 
       <div className="main-section">
         <div className="app-sidebar">
-          <Sidebar ImgUrl={Logo} ImgAlt="PlayFit Logo" Title="PlayFit" />
+          <Sidebar ImgUrl={Logo} ImgAlt="API Fun Logo" Title="API Fun" />
         </div>
 
         <div className="app-body">
           <div className="container-lg">
             <Routes>
-              <Route exact path="/" element={<Home />} />
+              <Route path="/" element={<Home />} />
               <Route path="/Home" element={<Home />} />
               <Route path="/ArtistSearch" element={<ArtistSearch />} />
               <Route path="/AlbumSearch" element={<AlbumSearch />} />
               <Route path="/SongSearch" element={<SongSearch />} />
-              <Route path="/Exercises" element={<Exercises />} />
+              <Route path="/MovieSearch" element={<MovieSearch />} />
+              <Route path="/MovieDetails/:id" element={<MovieDetails />} />
+              <Route path="/SpotifySearch" element={<SpotifySearch />} />
+              <Route path="/SpotifyArtist/:id" element={<SpotifyArtistDetails />} />
+              <Route path="/SpotifyAlbum/:id" element={<SpotifyAlbumDetails />} />
+
+
             </Routes>
           </div>
         </div>
@@ -56,12 +61,3 @@ function App() {
 
 export default App;
 
-// COLORFUL COMMENTS
-//! Red (!)
-//? Blue (?)
-//* Green (*)
-//^ Yellow (^)
-//& Pink (&)
-//~ Purple (~)
-//todo Mustard (todo)
-// Grey (//)

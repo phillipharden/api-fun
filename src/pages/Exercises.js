@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {
   Container,
@@ -8,84 +8,134 @@ import {
   Card,
   Row,
 } from "react-bootstrap";
-import { useState, useEffect } from "react";
-import { fetchData, searchParam } from "../utils/fetchData";
-import "../css/Exercises.css";
+import { fetchData } from "../utils/fetchData";
 import { FaSearch } from "react-icons/fa";
 import ErrorMessage from "../components/ErrorMessage";
 
 function Exercises() {
   const [searchInput, setSearchInput] = useState("");
+  const [allExercises, setAllExercises] = useState([]);
   const [exercises, setExercises] = useState([]);
   const [noResultsFound, setNoResultsFound] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
 
-  async function handleSearch() {
-    if (searchInput) {
-      console.log("Searched for " + searchInput);
-      const exercisesData = await fetchData(
-        `https://exercisedb.p.rapidapi.com/exercises`,
-        searchParam
-      );
+  useEffect(() => {
+    async function loadExercises() {
+      try {
+        setIsLoading(true);
+        setErrorMessage("");
 
-      const searchedExercises = exercisesData.filter(
-        (item) =>
-          item.name.toLowerCase().includes(searchInput) ||
-          item.target.toLowerCase().includes(searchInput) ||
-          item.equipment.toLowerCase().includes(searchInput) ||
-          item.bodyPart.toLowerCase().includes(searchInput)
-      );
+        const exercisesData = await fetchData(
+          "https://exercisedb.p.rapidapi.com/exercises?limit=2000"
+        );
 
-      if(searchedExercises == "") {
-        setNoResultsFound(true);
-      } 
-      if(searchedExercises != "") {
-        setNoResultsFound(false);
-      } 
-      setExercises(searchedExercises);     
+        console.log("FULL API RESPONSE:", exercisesData);
+        console.log("TOTAL EXERCISES LOADED:", exercisesData?.length);
+
+        const safeExercises = Array.isArray(exercisesData) ? exercisesData : [];
+        setAllExercises(safeExercises);
+      } catch (error) {
+        console.error("Exercise load error:", error);
+        setErrorMessage("Unable to load exercises right now. Please try again.");
+      } finally {
+        setIsLoading(false);
+      }
     }
+
+    loadExercises();
+  }, []);
+
+  function handleSearch() {
+    const trimmedSearch = searchInput.trim().toLowerCase();
+
+    if (!trimmedSearch) {
+      setExercises([]);
+      setNoResultsFound(false);
+      return;
+    }
+
+    const searchWords = trimmedSearch.split(" ").filter(Boolean);
+
+    const searchedExercises = allExercises.filter((item) => {
+      const exerciseName = item.name?.toLowerCase() || "";
+
+      return searchWords.some((word) => exerciseName.includes(word));
+    });
+
+    setExercises(searchedExercises);
+    setNoResultsFound(searchedExercises.length === 0);
   }
-  console.log(exercises);
+
   return (
     <Container className="margin-bottom-custom">
       <h1 className="brand-font">Exercises</h1>
+
       <InputGroup className="input-group my-3" size="sm">
         <FormControl
-        className="form"
-          placeholder="Search for an exercise..."
-          type="input"
-          onKeyPress={(event) => {
-            if (event.key == "Enter") {
+          className="form"
+          placeholder="Search for an exercise (ex: bench, deadlift, curl)"
+          type="text"
+          value={searchInput}
+          onKeyDown={(event) => {
+            if (event.key === "Enter") {
               handleSearch();
             }
           }}
-          onChange={(event) => setSearchInput(event.target.value.toLowerCase())}
+          onChange={(event) => setSearchInput(event.target.value)}
         />
-        <Button className="search-button" onClick={handleSearch}><FaSearch className="search-icon" /></Button>
+        <Button
+          className="search-button"
+          onClick={handleSearch}
+          disabled={isLoading}
+        >
+          <FaSearch className="search-icon" />
+        </Button>
       </InputGroup>
-       { noResultsFound && <ErrorMessage 
-      Message="No results found, please try again."
-      /> }  
-      {exercises != "" && (
+
+      {isLoading && <p>Loading exercises...</p>}
+
+      {(noResultsFound || errorMessage) && !isLoading && (
+        <ErrorMessage
+          Message={errorMessage || "No results found, please try again."}
+        />
+      )}
+
+      {exercises.length > 0 && (
         <div>
-          <p>Here are the results for {searchInput}...</p>
+          <p>Here are the results for "{searchInput}"...</p>
+
           <Row>
-            {exercises.map((exercise, i) => {
-              return (
-                <div className="card-container col-12 col-md-6 col-lg-4 col-xl-3 col-xxl-2" key={i}>
-                  <Card className="card-style h-100">
-                    <Card.Img src={exercise.gifUrl} alt="Visual instructions on how to perform the exercise" />
-                    <Card.Body className="card-body">
-                      <Card.Title className="card-title">
-                        {exercise.name.toUpperCase()}
-                      </Card.Title>
-                      <Card.Text className="card-text">
-                        This exercise targets the {exercise.target}.
-                      </Card.Text>
-                    </Card.Body>
-                  </Card>
-                </div>
-              );
-            })}
+            {exercises.map((exercise) => (
+              <div
+                className="card-container col-12 col-md-6 col-lg-4 col-xl-3 col-xxl-2"
+                key={exercise.id}
+              >
+                <Card className="card-style h-100">
+                  <Card.Body className="card-body">
+                    <Card.Title className="card-title mb-3">
+                      {exercise.name}
+                    </Card.Title>
+
+                    <Card.Text className="card-text mb-2">
+                      <strong>ID:</strong> {exercise.id}
+                    </Card.Text>
+
+                    <Card.Text className="card-text mb-2">
+                      <strong>Body Part:</strong> {exercise.bodyPart}
+                    </Card.Text>
+
+                    <Card.Text className="card-text mb-2">
+                      <strong>Target Muscle:</strong> {exercise.target}
+                    </Card.Text>
+
+                    <Card.Text className="card-text mb-0">
+                      <strong>Equipment:</strong> {exercise.equipment}
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+              </div>
+            ))}
           </Row>
         </div>
       )}

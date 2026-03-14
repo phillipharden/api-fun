@@ -1,34 +1,26 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { AiFillHome } from "react-icons/ai";
-import { FaSearch, FaDumbbell, FaMusic } from "react-icons/fa";
-import { MdLibraryMusic, MdAlbum } from "react-icons/md";
-import { CgProfile } from "react-icons/cg";
-import "../css/Sidebar.css";
+import { navLinks } from "../data/navLinks";
 
 const Sidebar = (props) => {
   return (
     <div className="sidebar">
       <div className="sidebar-body">
         <div className="sidebar-logo-container">
-          <img src={props.ImgUrl} alt={props.ImgAlt} className="sidebar-logo" />     
+          <img src={props.ImgUrl} alt={props.ImgAlt} className="sidebar-logo" />
         </div>
+
         <h1 className="brand-font m-3">{props.Title}</h1>
-        <Link to="/Home" className="sidebar-link">
-          <AiFillHome className="sidebar-icon" /> Home
-        </Link>
-        <Link to="/ArtistSearch" className="sidebar-link">
-          <CgProfile className="sidebar-icon" /> Search Artist
-        </Link>
-        <Link to="/AlbumSearch" className="sidebar-link">
-          <MdAlbum className="sidebar-icon" /> Search Album
-        </Link>
-        <Link to="/SongSearch" className="sidebar-link">
-          <FaMusic className="sidebar-icon" /> Search Song
-        </Link>
-        <Link to="/Exercises" className="sidebar-link">
-          <FaDumbbell className="sidebar-icon" /> Exercises
-        </Link>
+
+        {navLinks.map((link) => {
+          const Icon = link.icon;
+
+          return (
+            <Link key={link.to} to={link.to} className="sidebar-link">
+              <Icon className="sidebar-icon" /> {link.label}
+            </Link>
+          );
+        })}
       </div>
     </div>
   );
